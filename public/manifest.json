@@ -1,0 +1,8 @@
+{
+  "short_name": "React Timer - Henry Blevins",
+  "name":  "React Timer - Henry Blevins",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

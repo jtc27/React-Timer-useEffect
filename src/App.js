@@ -25,7 +25,7 @@ function App() {
 
   return ( //JSX
     <div className="app">
-      <button onClick={() => setSeconds(seconds + 1)}>inc seconds</button>
+    
       <div className='time-circle'>
         <div className="time">
           {seconds}

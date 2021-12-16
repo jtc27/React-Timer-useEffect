@@ -6,11 +6,11 @@ body {
 
 button {
   &:focus {
-    outline: none;
+    outline: none;  // chrome blue glow around
   }
 
-  &::-moz-focus-inner {
-    border: 0;
+  &::-moz-focus-inner { // firebox dotted outline
+    border: 0;         
   }
 }
 

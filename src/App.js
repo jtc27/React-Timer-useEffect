@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=sWKz9aLovjY  hBlevs  33:09
+// https://www.youtube.com/watch?v=sWKz9aLovjY  hBlevs  40:19
 
 // UseEffect lets us use code sometimes, not on every render
 // callback funct / [array] (dependency array) if this data has changed, then callback funct
@@ -9,55 +9,51 @@ import './App.scss';
 function App() {
 
   const [seconds, setSeconds] = useState(0);
-  const [count, setCount] = useState(0)
+  const [isRunning, setIsRunning] = useState(false)
     
-  //useEffect(() => {
-  // console.log('seconds', seconds)
-    // window.setInterval(() => setSeconds(seconds+1), 1000);
-  //}, [seconds]);  //only runs this if the value of 'seconds' changes 
-  // it's called useEffect because it's a side effect
-
-  // Using setTimeout, this works
-  //useEffect(() => {
-  //  console.log('first render', seconds)
-  //  window.setTimeout(() => {
-  //    console.log('tick', seconds);
-  //    setSeconds(seconds+1);
-  //  }, 1000);
-  //}, [seconds]); 
 
   // Using setInterval, callback function
   useEffect(() => {
-    console.log('first render', seconds)
-    window.setInterval(() => {
-      console.log('tick', seconds);
-      setSeconds(seconds => seconds+1); // callback; uses the updated value of seconds
-    }, 1000);
-  }, []); 
-
-
-
-  console.log('count', count)
+    if (isRunning) {
+      const id = window.setInterval(() => {
+        setSeconds(seconds => seconds+1); // callback; uses the updated value of seconds
+      }, 1000);
+      return () => window.clearInterval(id); //cleanup function
+    }
+    return undefined 
+  }, [isRunning]); 
 
   return ( //JSX
     <div className="app">
       <button onClick={() => setSeconds(seconds + 1)}>inc seconds</button>
-      <button onClick={() => setCount(count + 1)}>inc count</button>
       <div className='time-circle'>
         <div className="time">
           {seconds}
         </div>
       </div>
       <div className="buttons">
-        <button className="play-pause">
-          <i className="fa fa-play fa-2x" />
-        </button>
-        <button className="play-pause">
-          <i className="fa fa-pause fa-2x" />
-        </button>``
-        <button className="reset">
-          Reset
-        </button>
+        {isRunning 
+        ?  (
+          <button className="play-pause" onClick={() => {
+          setIsRunning(false);
+          }}>
+            <i className="fa fa-pause fa-2x" />
+          </button>
+        )
+        : (
+          <button className="play-pause" 
+          onClick={() => setIsRunning(true)}>
+            <i className="fa fa-play fa-2x" />
+          </button>
+          )
+        }
+          <button 
+          disabled={!isRunning}
+          className='reset' onClick={() => { 
+          setIsRunning(false);
+          setSeconds(0);      
+          }}>Reset
+          </button>        
       </div>
     </div>
   );

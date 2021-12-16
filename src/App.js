@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=sWKz9aLovjY  hBlevs
+// https://www.youtube.com/watch?v=sWKz9aLovjY  hBlevs  33:09
 
 // UseEffect lets us use code sometimes, not on every render
 // callback funct / [array] (dependency array) if this data has changed, then callback funct
@@ -11,13 +11,33 @@ function App() {
   const [seconds, setSeconds] = useState(0);
   const [count, setCount] = useState(0)
     
+  //useEffect(() => {
+  // console.log('seconds', seconds)
+    // window.setInterval(() => setSeconds(seconds+1), 1000);
+  //}, [seconds]);  //only runs this if the value of 'seconds' changes 
+  // it's called useEffect because it's a side effect
+
+  // Using setTimeout, this works
+  //useEffect(() => {
+  //  console.log('first render', seconds)
+  //  window.setTimeout(() => {
+  //    console.log('tick', seconds);
+  //    setSeconds(seconds+1);
+  //  }, 1000);
+  //}, [seconds]); 
+
+  // Using setInterval, callback function
   useEffect(() => {
-    console.log('seconds', seconds)
-  }, [seconds]);  //see the value of seconds, only when seconds changes
+    console.log('first render', seconds)
+    window.setInterval(() => {
+      console.log('tick', seconds);
+      setSeconds(seconds => seconds+1); // callback; uses the updated value of seconds
+    }, 1000);
+  }, []); 
+
+
 
   console.log('count', count)
-
-  //setSeconds(seconds + 1)
 
   return ( //JSX
     <div className="app">

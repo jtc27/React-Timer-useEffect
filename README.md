@@ -2,32 +2,23 @@
 
 <img src="https://i.imgur.com/C81a9kw.gif">
 
-Let's build a timer with React, and learn some very important lessons about `useState` and `useEffect` along the way.
+Tutorial followed on hBlevs youtube channel.
+https://www.youtube.com/watch?v=sWKz9aLovjY
 
-We will be learning about how `useState` modifies values, how `useEffect` allows us to run code sometimes, and what the heck a 'cleanup function' is.
+Original git: https://github.com/blevs/react-timer
 
-## Goals
+## Features
 
-* [ ] Create a working timer. It should start counting when the page loads via `useEffect`.
-* [ ] Track the number of seconds with `useState`.
-* [ ] Have a 'pause' button stop the timer.
-* [ ] Have a 'play' button re-start the timer.
-* [ ] Have a 'reset' button clear and stop the timer.
+* Create a working timer. It should start counting when the page loads via `useEffect`.
+* Track the number of seconds with `useState`.
+* Have a 'pause' button stop the timer.
+* Have a 'play' button re-start the timer.
+* Have a 'reset' button clear and stop the timer.
 
-## Stretch Goals
+## What I learned:
 
-* [ ] Display the pause button when the timer is running, and start button when the timer is stopped.
-* [ ] Disable the reset button when it isn't useful.
-* [ ] Display the time in a [hh:]mm:ss format.
-* [ ] Make your timer keep track of time more accurately by using [`Date.now()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now) instead of assuming exactly a second has passed.
-* [ ] Make it a count down timer, instead of a stopwatch.
-* [ ] Allow the user to set the amount of time with an input.
-* [ ] Try to figure out the weird css to get the circle (and animation) around the time.
-
-## Notes
-
-* You can have a callback function run repeatedly with some delay using [`window.setInterval(func, delay)`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval).
-* [`useEffect`](https://reactjs.org/docs/hooks-reference.html#useeffect) let's us run code with 'side effects' _sometimes_.
+* Usage of UseEffect in React, including callback functions & cleanup functions
+* The play and pause button are in the same position. They take turns showing up
 
 ## Install and Use
 
